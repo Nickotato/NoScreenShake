@@ -1,25 +1,41 @@
 package me.nickotato.noscreenshake.config;
 
 import me.nickotato.noscreenshake.NoScreenShake;
-import cc.polyfrost.oneconfig.config.Config;
-import cc.polyfrost.oneconfig.config.annotations.Switch;
-import cc.polyfrost.oneconfig.config.data.Mod;
-import cc.polyfrost.oneconfig.config.data.ModType;
+import net.minecraftforge.common.config.Configuration;
 
-/**
- * The main Config entrypoint that extends the Config type and inits the config options.
- * See <a href="https://docs.polyfrost.cc/oneconfig/config/adding-options">this link</a> for more config Options
- */
-public class NoScreenShakeConfig extends Config {
-    @Switch(
-            name = "Enable No Screen Shake",
-            description = "Completely enables or disables the mod."
-    )
+import java.io.File;
+
+public class NoScreenShakeConfig {
+    private static Configuration config;
+
     public static boolean enabled = true;
 
-    public NoScreenShakeConfig() {
-        super(new Mod(NoScreenShake.NAME, ModType.UTIL_QOL), NoScreenShake.MODID + ".json");
-        initialize();
+    public static void init(File configFile) {
+        config = new Configuration(configFile);
+
+        try {
+            config.load();
+            enabled = config.getBoolean(
+                    "enabled",
+                    Configuration.CATEGORY_GENERAL,
+                    true,
+                    "Completely enables or disables the mod."
+            );
+        } catch (Exception e) {
+            System.err.println("Failed to load config for " + NoScreenShake.NAME);
+            e.printStackTrace();
+        } finally {
+            if (config.hasChanged()) {
+                config.save();
+            }
+        }
+    }
+
+    public static void save() {
+        if (config == null) return; // safety check
+
+        config.get(Configuration.CATEGORY_GENERAL, "enabled", enabled)
+                .set(enabled); // update the value in the config object
+        config.save(); // write to disk
     }
 }
-
