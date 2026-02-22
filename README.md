@@ -13,7 +13,7 @@ This mod aims to fix that, it's a lightweight mod that only includes a small, bu
 ## Installation
 
 1. Make sure you have Minecraft 1.8.9 with Forge installed.
-2. Place `NoScreenShake-1.8.9-forge-1.0.0.jar` in your `mods` folder.
+2. Place `NoScreenShake-1.8.9-forge-1.0.1.jar` in your `mods` folder.
 3. Launch Minecraft.
 
 ## Configuration
