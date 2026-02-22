@@ -7,7 +7,7 @@ This mod aims to fix that, it's a lightweight mod that only includes a small, bu
 ## Features
 
 - Disabled the screen and crosshair shaking with viewbobbing to make aiming easier.
-- Configurable via a simple in-game toggle with OneConfig.
+- Configurable via a simple in-game toggle accessed through a keybind.
 - Lightweight.
 
 ## Installation
@@ -24,7 +24,6 @@ This mod aims to fix that, it's a lightweight mod that only includes a small, bu
 ## Credits
 
 - **Nickotato** - Author
-- **Polyfrost OneConfig** - Configuration framework used for in-game settings
 - **Polyfrost Example Mod** - The Example Mod this Mod is built on top of.
 - **Forge** - Minecraft modding platform
 
